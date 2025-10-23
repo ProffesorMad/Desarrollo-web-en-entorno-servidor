@@ -1,7 +1,8 @@
 <?php
-
+$clicks=0;
 if (isset($_POST['submit'])) {
-    $clicks=1;
+    $clicks=$_POST['clicks'];
+    $clicks++;
 }
 ?>
 <!doctype html>
@@ -14,10 +15,11 @@ if (isset($_POST['submit'])) {
     <title>Document</title>
 </head>
 <body>
-<h1>Has realizado <?=$clicks ?? 0?> cliks</h1>
+<h1>Has realizado <?=$clicks?> cliks</h1>
 <fieldset style="background: antiquewhite;width:70%;margin:10%">
     <legend>Contador de clicks</legend>
     <form action="index.php" method="POST">
+        <input type="hidden" name="clicks" value="<?=$clicks?>" id="">
         <input type="submit" value="click" name="submit">
     </form>
 </fieldset>

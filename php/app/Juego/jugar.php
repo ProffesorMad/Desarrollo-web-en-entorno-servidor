@@ -15,7 +15,7 @@ $numero = 1;
 $respuestaSeleccionada = 'mayor';
 $intentos_max = 0;
 
-// Primera jugada (desde index.php)
+// Primera jugada (desde Fracciones.php)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['intervalo']) && !isset($_POST['respuesta'])) {
     $intervalo = (int) $_POST['intervalo'];
     $min = 1;
@@ -52,7 +52,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['respuesta'])) {
 
     $numero = (int) floor(($min + $max) / 2);
 } else {
-    header("Location: index.php");
+    header("Location: Fracciones.php");
     exit;
 }
 ?>
