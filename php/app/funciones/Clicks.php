@@ -1,10 +1,4 @@
 <?php
-
-// Formulario con un campo nombre y un boton acceder al lado, cuando ponga un nombre,
-// Ej: Pablo , se borre el nombre y al lado ponga Pablo 1 click, luego si vuelvo a poner
-// Pablo y le doy a acceder que ponga Pablo 2 cliks y si pongo luego Daniel y le doy a acceder
-// ponga Pablo 2 click Daniel 1 click
-
 session_start();
 
 if (!isset($_SESSION['clicks'])) {
@@ -19,9 +13,48 @@ if (isset($_POST['name']) && !empty(trim($_POST['name']))) {
     } else {
         $_SESSION['clicks'][$name] = 1;
     }
-    
+
     header("Location: ".$_SERVER['PHP_SELF']);
     exit;
 }
 ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contador de Clicks por Nombre</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input, button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
 
+<h2>Formulario de nombres</h2>
+<form method="post" action="">
+    <input type="text" name="name" placeholder="Escribe un nombre">
+    <button type="submit">Acceder</button>
+</form>
+
+<div id="result">
+    <?php
+    if (!empty($_SESSION['clicks'])) {
+        foreach ($_SESSION['clicks'] as $name => $count) {
+            echo htmlspecialchars($name) . " $count click" . ($count > 1 ? "s" : "") . "<br>";
+        }
+    }
+    ?>
+</div>
+
+</body>
+</html>
