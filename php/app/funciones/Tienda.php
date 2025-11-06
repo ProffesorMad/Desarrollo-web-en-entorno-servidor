@@ -14,7 +14,7 @@ if (!isset($_SESSION['productos'])) {
 
 $factura = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $productos = $_SESSION['productos']; // traer stock actual
+    $productos = $_SESSION['productos'];
     $total_general = 0;
     $detalle_factura = "";
 
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <tr>
                         <td>" . ucfirst($nombre) . "</td>
                         <td>$cantidad</td>
-                        <td>" . number_format($precio, 2) . " €</td>
+                        <td>" . number_format($precio, 2) . " €</td> 
                         <td>" . number_format($total, 2) . " €</td>
                     </tr>
                 ";
