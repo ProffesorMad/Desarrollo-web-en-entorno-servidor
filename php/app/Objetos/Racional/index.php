@@ -1,8 +1,8 @@
 <?php
 require_once("Racional.php");
 
-$r1 = new Racional(3,4);
-$r2 = new Racional(1,2);
+$r1 = new Racional(7,3);
+$r2 = new Racional(9,4);
 
 echo "<br>";
 echo "R1 = $r1 <br>";
